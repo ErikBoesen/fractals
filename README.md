@@ -5,5 +5,10 @@ I started working on this code for fun in IB CS, then decided to research fracta
 
 You can find previous development history on my repositories [ibhlcs](https://github.com/ErikBoesen/ibhlcs/commits/master) in `programs/py/` and [ia_math](https://github.com/ErikBoesen/ia_math/commits/master) under `code/`.
 
-# Author
+## Usage
+```sh
+python3 mandelbrot.py -o /path/to/output_file.png
+```
+
+## Author
 [Erik Boesen](https://github.com/ErikBoesen)
