@@ -8,8 +8,9 @@ I started working on this code for fun in IB CS, then decided to research fracta
 You can find previous development history on my repositories [ibhlcs](https://github.com/ErikBoesen/ibhlcs/commits/master) in `programs/py/` and [ia_math](https://github.com/ErikBoesen/ia_math/commits/master) under `code/`.
 
 ## Usage
+Render an image of the Mandelbrot Set fractal, saving to `/path/to/output_file.png` with image size of 600px:
 ```sh
-python3 mandelbrot.py -o /path/to/output_file.png
+python3 mandelbrot.py -o /path/to/output_file.png -s 600
 ```
 
 ## Author
