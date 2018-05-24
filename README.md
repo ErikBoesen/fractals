@@ -1,7 +1,5 @@
 # fractals
-<img src="examples/blue.png" height=250>
-<img src="examples/hue.png" height=250>
-<img src="examples/zoom.png" height=250>
+<img src="examples/blue.png" height=250><img src="examples/hue.png" height=250><img src="examples/zoom.png" height=250>
 
 Code written in IB HL Computer Science and IB HL Math for generating fractals.
 
