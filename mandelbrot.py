@@ -2,11 +2,6 @@ from PIL import Image, ImageDraw
 import argparse
 import sys
 
-# Image sizes
-SCALE = 400
-WIDTH = SCALE
-HEIGHT = SCALE
-
 # Window bounds
 REAL_START = -2
 REAL_END = 1
@@ -29,25 +24,29 @@ def mandelbrot(c):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-o', dest='path', default='output.png', help='path to which to output image')
+    parser.add_argument('-s', dest='size', type=int, default=400, help='resolution of output image')
     args = parser.parse_args()
 
-    image = Image.new('HSV', (WIDTH, HEIGHT), (0, 0, 0))
+    width = args.size
+    height = args.size
+
+    image = Image.new('HSV', (width, height), (0, 0, 0))
     draw = ImageDraw.Draw(image)
 
-    for x in range(0, WIDTH):
+    for x in range(0, width):
         sys.stdout.write('\033[K')
-        print('x=%d/%d (%d%%)\r' % (x, WIDTH, 100*x/WIDTH), end='')
+        print('x=%d/%d (%d%%)\r' % (x, width, 100*x/width), end='')
         sys.stdout.flush()
-        for y in range(0, HEIGHT//2+1):
+        for y in range(0, height//2+1):
             # Get complex number from coordinate
-            c = complex(REAL_START + (x / WIDTH) * (REAL_END - REAL_START),
-                        IMAG_START + (y / HEIGHT) * (IMAG_END - IMAG_START))
+            c = complex(REAL_START + (x / width) * (REAL_END - REAL_START),
+                        IMAG_START + (y / height) * (IMAG_END - IMAG_START))
             iterations = mandelbrot(c)
             hsv = (140,
                    255,
                    int(255 * iterations / ITER_LIM) if iterations < ITER_LIM else 0)
             draw.point([x, y], hsv)
-            draw.point([x, HEIGHT - y], hsv)
+            draw.point([x, height - y], hsv)
 
     image.convert('RGB').save(args.path, 'PNG')
     print('Image successfully saved to %s.' % args.path)
