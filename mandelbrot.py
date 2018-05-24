@@ -20,11 +20,11 @@ def mandelbrot(c):
     Count iterations to convergence.
     """
     z = 0
-    n = 0
-    while abs(z) <= 2 and n < ITER_LIM:
-        z = z*z + c
-        n += 1
-    return n
+    iterations = 0
+    while abs(z) <= 2 and iterations < ITER_LIM:
+        z = z * z + c
+        iterations += 1
+    return iterations
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -42,10 +42,10 @@ if __name__ == '__main__':
             # Get complex number from coordinate
             c = complex(REAL_START + (x / WIDTH) * (REAL_END - REAL_START),
                         IMAG_START + (y / HEIGHT) * (IMAG_END - IMAG_START))
-            m = mandelbrot(c)
+            iterations = mandelbrot(c)
             hsv = (140,
                    255,
-                   int(255 * m / ITER_LIM) if m < ITER_LIM else 0)
+                   int(255 * iterations / ITER_LIM) if iterations < ITER_LIM else 0)
             draw.point([x, y], hsv)
             draw.point([x, HEIGHT - y], hsv)
 
